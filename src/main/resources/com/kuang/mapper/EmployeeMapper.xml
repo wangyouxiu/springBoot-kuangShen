@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kuang.mapper.EmployeeMapper">
+  <resultMap id="BaseResultMap" type="com.kuang.model.Employee">
+    <!--@mbg.generated generated on Mon Nov 16 01:57:16 CST 2020.-->
+    <!--@Table t_employee-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="lastName" jdbcType="VARCHAR" property="lastname" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="birth" jdbcType="TIMESTAMP" property="birth" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated generated on Mon Nov 16 01:57:16 CST 2020.-->
+    id, lastName, email, gender, birth, department_id
+  </sql>
+
+  <resultMap id="BaseResultMap2" type="com.kuang.pojo.EmployeePojo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="lastName" jdbcType="VARCHAR" property="lastname" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="gender" jdbcType="INTEGER" property="gender" />
+    <result column="birth" jdbcType="TIMESTAMP" property="birth" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <association property="department" javaType="com.kuang.model.Department">
+      <id column="id" jdbcType="INTEGER" property="id" />
+      <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+    </association>
+  </resultMap>
+
+  <select id="getAllEmployee" resultMap="BaseResultMap2" resultType="java.util.List">
+    select t_employee.* ,t_department.*
+    from t_employee ,t_department
+    where t_employee.department_id = t_department.id;
+  </select>
+</mapper>

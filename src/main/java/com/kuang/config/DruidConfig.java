@@ -13,6 +13,10 @@ import javax.servlet.Filter;
 import javax.sql.DataSource;
 import java.util.HashMap;
 
+/**
+ * 德鲁伊的配置文件
+ * @author Wang Yue
+ */
 @Configuration
 public class DruidConfig {
 

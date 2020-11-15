@@ -67,7 +67,7 @@
 							<tbody>
 								<tr th:each="emp:${emps}">
 									<td th:text="${emp.getId()}"></td>
-									<td th:text="${emp.getLastName()}"></td>
+									<td th:text="${emp.getLastname()}"></td>
 									<td th:text="${emp.getEmail()}"></td>
 									<td th:text="${emp.getGender()==0?'女':'男'}"></td>
 									<td th:text="${emp.getDepartment().getDepartmentName()}"></td>
